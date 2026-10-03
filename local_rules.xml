@@ -1,0 +1,20 @@
+﻿<group name="local,syslog,sshd,web,">
+  <rule id="100001" level="10" frequency="5" timeframe="60">
+    <if_matched_sid>5710</if_matched_sid>
+    <same_source_ip />
+    <description>SOC Alert: SSH Brute-Force attack detected from IP $(srcip)</description>
+    <mitre><id>T1110.001</id></mitre>
+  </rule>
+  <rule id="100002" level="12">
+    <if_sid>31100</if_sid>
+    <url type="pcre2">(?i)(union.*select|select.*from|'\s*or\s*1=1|--)</url>
+    <description>SOC Alert: SQL Injection (SQLi) attempt detected from $(srcip)</description>
+    <mitre><id>T1190</id></mitre>
+  </rule>
+  <rule id="100003" level="12">
+    <if_sid>31100</if_sid>
+    <url type="pcre2">(\.\./|\.\.\\|/etc/passwd|/etc/shadow)</url>
+    <description>SOC Alert: Path Traversal / LFI attempt detected from $(srcip)</description>
+    <mitre><id>T1083</id></mitre>
+  </rule>
+</group>

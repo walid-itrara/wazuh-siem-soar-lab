@@ -1,0 +1,46 @@
+[
+  {
+    "timestamp": "2026-10-03T13:04:19.985147+00:00",
+    "rule": {
+      "id": "100002",
+      "level": 12,
+      "description": "SQL Injection signature detected on /login.php?id=1'%20OR%201=1--",
+      "mitre": {
+        "id": [
+          "T1190"
+        ]
+      }
+    },
+    "agent": {
+      "id": "001",
+      "name": "prod-server",
+      "ip": "172.28.10.10"
+    },
+    "data": {
+      "srcip": "172.28.10.20"
+    },
+    "full_log": "172.28.10.20 - - [03/Oct/2026:13:04:19 +0000] \"GET /login.php?id=1'%20OR%201=1-- HTTP/1.1\" 404 162 \"-\" \"curl/8.14.1\""
+  },
+  {
+    "timestamp": "2026-10-03T13:04:37.757472+00:00",
+    "rule": {
+      "id": "100001",
+      "level": 10,
+      "description": "SSH Brute-Force threshold reached (5 attempts)",
+      "mitre": {
+        "id": [
+          "T1110.001"
+        ]
+      }
+    },
+    "agent": {
+      "id": "001",
+      "name": "prod-server",
+      "ip": "172.28.10.10"
+    },
+    "data": {
+      "srcip": "172.28.10.20"
+    },
+    "full_log": "Failed password for root from 172.28.10.20 port 44924 ssh2"
+  }
+]

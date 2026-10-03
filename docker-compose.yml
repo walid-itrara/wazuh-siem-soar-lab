@@ -1,0 +1,29 @@
+﻿services:
+  prod-server:
+    build: ./server
+    container_name: prod-server
+    hostname: prod-server
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - ./reports:/reports
+    networks:
+      soc_net:
+        ipv4_address: 172.28.10.10
+
+  tester-node:
+    build: ./tester
+    container_name: tester-node
+    hostname: tester-node
+    depends_on:
+      - prod-server
+    networks:
+      soc_net:
+        ipv4_address: 172.28.10.20
+
+networks:
+  soc_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.10.0/24
